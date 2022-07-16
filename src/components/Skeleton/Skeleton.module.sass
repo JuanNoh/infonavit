@@ -1,0 +1,25 @@
+.Skeleton
+    position: relative
+    background-color: rgb(255, 255, 255)
+    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms
+    border-radius: 15px
+    box-shadow: rgb(157 99 99 / 9%) 0px 10px 27px
+    padding: 10px
+    margin: 10px
+    overflow: hidden
+    min-width: 150px
+    min-height: 219px
+    &:after
+        content: ""
+        position: absolute
+        inset: 0 -150%
+        background: linear-gradient(90deg,rgba(190, 190, 190, 0.2) 25%,rgba(129, 129, 129, 0.24) 37%,rgba(190, 190, 190, 0.2) 63%)
+        -webkit-animation: name-of-animation 1.4s ease infinite
+        animation: name-of-animation 1.4s ease infinite
+
+@keyframes name-of-animation
+    0%
+        transform: translate(-37.5%)
+
+    to
+        transform: translate(37.5%)

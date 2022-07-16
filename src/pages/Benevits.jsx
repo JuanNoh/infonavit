@@ -1,4 +1,4 @@
-import { Layout, Card } from "../components";
+import { Layout, Card, Skeleton } from "../components";
 import { useBenevits } from "../hooks/useBenevits";
 
 export function Benevits() {
@@ -7,7 +7,7 @@ export function Benevits() {
   return (
     <Layout>
       {isLoading ? (
-        <div>Cargando...</div>
+        <Skeleton />
       ) : (
         benevits.map((benevit) => {
           return <Card key={benevit.id} data={benevit} />;
