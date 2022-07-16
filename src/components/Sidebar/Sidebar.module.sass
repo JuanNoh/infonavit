@@ -11,8 +11,13 @@
     top: 0
     transition: all 0.5s
     transform: translate3d(-200px, 0, 0)
+    @media (min-width:1025px)
+        transform: translate3d(0, 0, 0)
 .SidebarOpen
     transform: translate3d(0, 0, 0)
+.Logo
+    @media (min-width:1025px)
+        display: none
 .Link
     color: white
     font-size: 14px

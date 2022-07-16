@@ -34,5 +34,15 @@ body > #root > div
     @include desktop
         padding-left: 25%
         padding-right: 25%
+
+.containerBack
+    display: grid
+    gap: 12px
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem),2fr))
+    padding-left: 5%
+    padding-right: 5%
+    @include desktop
+        padding-left: 250px
+        padding-right: 10%
 h1,h2,h3,p,a
     font-family: 'Roboto', sans-serif

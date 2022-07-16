@@ -23,7 +23,7 @@ export default function Layout({ children }) {
         setIsOpen={setIsOpen}
         handleLogout={handleLogut}
       />
-      <div className="container">{children}</div>
+      <div className="containerBack">{children}</div>
     </>
   );
 }

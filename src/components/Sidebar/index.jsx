@@ -12,9 +12,8 @@ export default function Sidebar({ isOpen, setIsOpen, handleLogout }) {
   const className = `${style.Sidebar} ${isOpen ? style.SidebarOpen : ""}`;
   return (
     <div className={className} ref={ref}>
-      <div className="sidebar-body">
-        <img src={Logo} alt="Logo" />
-
+      <div>
+        <img className={style.Logo} src={Logo} alt="Logo" />
         <ul className={style.Body}>
           <li>
             <Link to="/" className={style.Link}>
