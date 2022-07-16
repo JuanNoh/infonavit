@@ -2,6 +2,7 @@ import { useLayoutEffect, useEffect, useState } from "react";
 import { Input, Button, Form, HeaderLogin } from "../components";
 import { useAuth } from "../hooks/useAuth";
 import { useForm } from "../hooks/useForm";
+import Swal from "sweetalert2";
 
 import Logo from "../assets/logo.png";
 
@@ -22,7 +23,7 @@ export function Login() {
 
   useEffect(() => {
     if (errorMessage !== undefined) {
-      //Swal.fire("Error en la autenticación", errorMessage, "error");
+      Swal.fire("", "Error en la autenticación", "error");
       console.log(errorMessage);
     }
   }, [errorMessage]);

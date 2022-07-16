@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { Layout, Card } from "../components";
+import { Layout, Card, Skeleton } from "../components";
 import { getBenevits } from "../apis";
 
-export function MyBenevits(props) {
+export function MyBenevits() {
   const [benevits, setBenevits] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     const fetchData = async () => {
       const test = await getBenevits();
@@ -22,13 +23,15 @@ export function MyBenevits(props) {
   }, []);
   return (
     <Layout>
-      {isLoading ? (
-        <div>Cargando...</div>
-      ) : (
-        benevits.map((benevit) => {
-          return <Card key={benevit.id} data={benevit} />;
-        })
-      )}
+      <div className="containerBack">
+        {isLoading ? (
+          <Skeleton />
+        ) : (
+          benevits.map((benevit) => {
+            return <Card key={benevit.id} data={benevit} />;
+          })
+        )}
+      </div>
     </Layout>
   );
 }

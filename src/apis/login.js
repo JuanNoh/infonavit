@@ -4,6 +4,7 @@ import qs from "qs";
 import { urlApi, publicKey } from "../config/index";
 
 export async function loginApi({ email, password }) {
+  console.log(publicKey);
   const url = `${urlApi}v2/member/authentication`;
   const user = `${email}:${password}`;
 

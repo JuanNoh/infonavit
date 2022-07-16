@@ -1,35 +1,52 @@
 import { useState, useEffect } from "react";
-import { getBenevits } from "../apis";
+import { getBenevits, searchBenevits } from "../apis";
 
 export function useBenevits() {
   const [benevits, setBenevits] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const test = await getBenevits();
-      setIsLoading(false);
-      if (test.data.locked.length > 0) {
-        test.data.locked.map((item) => {
-          item.type = "locked";
-          return item;
-        });
-      }
-      if (test.data.unlocked.length > 0) {
-        test.data.unlocked.map((item) => {
-          item.type = "unlocked";
-          return item;
-        });
-      }
-      const data = test.data.locked.concat(test.data.unlocked);
-      console.log("datos", data);
-      setBenevits(data);
-    };
     fetchData();
   }, []);
+
+  const fetchData = async () => {
+    const response = await getBenevits();
+    setIsLoading(true);
+    if (response.data.locked.length > 0) {
+      response.data.locked.map((item) => {
+        item.type = "locked";
+        return item;
+      });
+    }
+    if (response.data.unlocked.length > 0) {
+      response.data.unlocked.map((item) => {
+        item.type = "unlocked";
+        return item;
+      });
+    }
+    const data = response.data.locked.concat(response.data.unlocked);
+    setBenevits(data);
+    setIsLoading(false);
+  };
+
+  const searchData = async (data) => {
+    if (data !== "") {
+      setIsLoading(true);
+      const response = await searchBenevits(data);
+      if (response.status === 200) {
+        setBenevits(response.data);
+      }
+      setIsLoading(false);
+    } else {
+      setIsLoading(true);
+      console.log("consulta global");
+      fetchData();
+    }
+  };
 
   return {
     benevits,
     isLoading,
+    searchData,
   };
 }
