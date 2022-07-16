@@ -18,7 +18,11 @@ export default function Layout({ children }) {
   return (
     <>
       <Navbar handleClick={handleClick} />
-      <Sidebar isOpen={isOpen} handleLogout={handleLogut} />
+      <Sidebar
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        handleLogout={handleLogut}
+      />
       <div className="container">{children}</div>
     </>
   );

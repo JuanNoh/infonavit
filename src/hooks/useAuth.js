@@ -12,11 +12,12 @@ export function useAuth() {
   const dispatch = useDispatch();
 
   const startLogin = async ({ email, password }) => {
-    dispatch(onChecking());
     try {
       const result = await loginApi({ email, password });
-      localStorage.setItem("token", result.headers.authorization);
-      if (result.status === 200) dispatch(onLogin(result));
+      if (result.status === 200) {
+        localStorage.setItem("token", result.headers.authorization);
+        dispatch(onLogin(result));
+      }
     } catch (error) {
       dispatch(onLogout("Credenciales incorrectas"));
       setTimeout(() => {

@@ -1,18 +1,28 @@
 import style from "./Sidebar.module.sass";
+import { Link } from "react-router-dom";
+import { useOutsideClick } from "../../hooks/useOutsideClick";
+import Logo from "../../assets/logo.png";
 
-export default function Sidebar({ isOpen, handleLogout }) {
+export default function Sidebar({ isOpen, setIsOpen, handleLogout }) {
+  const handleOutsideClick = () => {
+    setIsOpen(false);
+  };
+  const ref = useOutsideClick(handleOutsideClick);
+
+  const className = `${style.Sidebar} ${isOpen ? style.SidebarOpen : ""}`;
   return (
-    <div className={style.Sidebar}>
+    <div className={className} ref={ref}>
       <div className="sidebar-body">
-        <h3>Sidebar</h3>
+        <img src={Logo} alt="Logo" />
+
         <ul className={style.Body}>
           <li>
-            <a href="/" className={style.Link}>
+            <Link to="/" className={style.Link}>
               Benevits
-            </a>
-            <a href="/" className={style.Link}>
+            </Link>
+            <Link to="/my-benevits" className={style.Link}>
               My Benevits
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
