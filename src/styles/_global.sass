@@ -1,13 +1,16 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap')
+
 body
     min-height: 100%
     width: 100%
-.App
+body > #root > div
     height: 100vh
+
 .loginHeader
-    min-height: 220px
+    min-height: 400px
     height: 40%
-    background-color: red
+    background-color: #E61737
     padding-left: 5%
     padding-right: 5%
     display: flex
@@ -21,7 +24,7 @@ body
         @include desktop
             display: none
 .loginLogo
-    max-width: 200px
+    max-width: 250px
     @include desktop
         max-width: 300px
 
@@ -31,3 +34,5 @@ body
     @include desktop
         padding-left: 25%
         padding-right: 25%
+h1,h2,h3,p,a
+    font-family: 'Roboto', sans-serif

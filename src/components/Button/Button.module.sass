@@ -1,7 +1,5 @@
 .Button
-    background-color: #f14668
     border-color: transparent
-    color: #fff
     border-radius: 20px
     width: 100%
     cursor: pointer
@@ -10,5 +8,18 @@
     width: 100%
     margin-top: 20px
     margin-bottom: 10px
+.ButtonPrimary
+    background-color: #E61737
+    color: #fff
     &:active
-        background-color: rgba(#f14668, 80%)
+        background-color: rgba(#E61737, 70%)
+    &:focus
+        background-color: rgba(#E61737, 60%)
+.Disabled
+    color: rgba(0, 0, 0, 0.26)
+    box-shadow: none
+    background-color: rgba(0, 0, 0, 0.12)
+    &:active
+        background-color: rgba(0, 0, 0, 0.12)
+    &:focus
+        background-color: rgba(0, 0, 0, 0.12)

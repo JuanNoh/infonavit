@@ -1,20 +1,35 @@
+import { useLayoutEffect, useEffect, useState } from "react";
 import { Input, Button, Form, HeaderLogin } from "../components";
+import { useAuth } from "../hooks/useAuth";
+import { useForm } from "../hooks/useForm";
+
 import Logo from "../assets/logo.png";
 
+const loginFormFields = {
+  email: "",
+  password: "",
+};
+
 export function Login() {
-  const onChange = (e) => {
-    console.log(e.target.value);
+  const { email, password, onInputChange } = useForm(loginFormFields);
+  const { startLogin, errorMessage } = useAuth();
+  const [disabled, setDisabled] = useState(true);
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+    startLogin({ email, password });
   };
-  const onSubmit = (e) => {
-    e.preventDefault();
-    console.log("submit");
-  };
 
-  //next input is for the email
+  useEffect(() => {
+    if (errorMessage !== undefined) {
+      //Swal.fire("Error en la autenticación", errorMessage, "error");
+      console.log(errorMessage);
+    }
+  }, [errorMessage]);
 
-  //next input is for the password
-
-  //function que llama a la funcion de login
+  useLayoutEffect(() => {
+    email === "" || password === "" ? setDisabled(true) : setDisabled(false);
+  }, [email, password]);
 
   return (
     <>
@@ -25,17 +40,19 @@ export function Login() {
         <Form onSubmit={onSubmit}>
           <Input
             placeholder="Usuario"
-            type="email"
+            type="text"
             name="email"
-            onChange={onChange}
+            value={password}
+            onChange={onInputChange}
           />
           <Input
             placeholder="Contraseña"
             type="password"
             name="password"
-            onChange={onChange}
+            value={password}
+            onChange={onInputChange}
           />
-          <Button type="submit" disabled>
+          <Button type="submit" disabled={disabled}>
             Login
           </Button>
         </Form>

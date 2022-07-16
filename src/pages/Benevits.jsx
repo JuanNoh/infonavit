@@ -1,7 +1,8 @@
+import { Layout } from "../components";
 export function Benevits(props) {
   return (
-    <div>
+    <Layout>
       <h1>Benevits</h1>
-    </div>
+    </Layout>
   );
 }
