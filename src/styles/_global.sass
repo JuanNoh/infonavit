@@ -1,0 +1,33 @@
+
+body
+    min-height: 100%
+    width: 100%
+.App
+    height: 100vh
+.loginHeader
+    min-height: 220px
+    height: 40%
+    background-color: red
+    padding-left: 5%
+    padding-right: 5%
+    display: flex
+    align-items: center
+    justify-content: center
+    position: relative
+    svg
+        width: 100%
+        position: absolute
+        bottom: -2px
+        @include desktop
+            display: none
+.loginLogo
+    max-width: 200px
+    @include desktop
+        max-width: 300px
+
+.container
+    padding-left: 5%
+    padding-right: 5%
+    @include desktop
+        padding-left: 25%
+        padding-right: 25%
